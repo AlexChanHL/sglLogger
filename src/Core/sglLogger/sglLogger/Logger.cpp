@@ -1,7 +1,7 @@
 
 #include "Core/LogMsg.hpp"
 #include "Core/Types.hpp"
-#include "Core/Base.hpp"
+#include "Base.hpp"
 #include "Logger.hpp"
 
 #include <fmt/format.h>
@@ -10,73 +10,60 @@
 namespace sglLogger
 {
 
-enum class LogType
-{
-    None = 1,
-    Trace = 1 << 1, 
-    Debug = 2 << 1, 
-    Info = 3 << 1, 
-    Warn = 4 << 1, 
-    Error = 5 << 1, 
-    Servere = 6 << 1
-};
-
-class LoggerImpl : public Logger
+class Logger
 {
    public:
-    LoggerImpl()
+    Logger()
     {
 
     }
-    virtual ~LoggerImpl()
+    ~Logger()
     {
 
     }
 
-    virtual void traceLog() override
+    void traceLog() 
     {
     // log(payload, LogType::Trace);
     }
 
-    virtual void debugLog() override
+    void debugLog() 
 		{
     // log(payload, LogType::Trace);
     }
 
-    virtual void infoLog() override
+    template<typename... Args>
+    void infoLog(Args&&... args) 
+		{
+    // String data = fmt::format("{}\n", "0");
+    }
+
+    void warnLog() 
 		{
 
     }
 
-    virtual void warnLog() override
+    void errorLog() 
 		{
 
     }
 
-    virtual void errorLog() override
-		{
-
-    }
-
-    virtual void servereLog() override
+    void servereLog() 
 		{
 
     }
 
    private:
-    void log()
+    void log(String payload, LogType logType)
     {
-    
+    // LogMsg logMsg = createMsg(payload, logType);
+    // m_routeMethod->use(logMsg);
     }
 
    private:
 		LogMsg m_lastLogMessage;
+    // UniquePtr<RouteMethod> m_routeMethod;
 };
-
-static UniquePtr<Logger> createSglLogger()
-{
-    return createUnique<LoggerImpl>();
-}
 
 }       // namespace sglLogger
 

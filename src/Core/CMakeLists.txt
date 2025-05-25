@@ -3,22 +3,17 @@ add_subdirectory(sglLogger)
 
 set(NAME ${PROJECT_NAME})
 
-file(GLOB CURRENT_DIR
+file(GLOB LOGGER_INTERFACE
       Logger/*.cpp
       Logger/*.hpp
     )
 
-file(GLOB LOGGER_INTERFACE
-			${PROJECT_NAME}/*.cpp
-			${PROJECT_NAME}/*.hpp
-     )
+# set(LOGGER_INTERFACE ${LOGGER_INTERFACE_DIR})
 
-set(LOGGER_INTERFACE ${LOGGER_INTERFACE})
-
-# add_library(${NAME} STATIC
-# 						${CURRENT_DIR} ${LOGGER}
+# add_library("${NAME}Interface" INTERFACE
+# 						${LOGGER}
 #            )
-#
+
 # target_link_libraries(${NAME} PRIVATE ProjectWarnings)
 
 # if(BUILD_ENGINE_WITH_PRECOMPILED_HEADERS)

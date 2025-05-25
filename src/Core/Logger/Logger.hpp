@@ -4,8 +4,8 @@
 class Logger
 {
    public:
-    Logger();
-    virtual ~Logger();
+    Logger() = default;
+    virtual ~Logger() = default;
 
     virtual void traceLog() = 0;
     virtual void debugLog() = 0;
